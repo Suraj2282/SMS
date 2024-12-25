@@ -25,7 +25,7 @@ import com.cts.sms.service.StudentService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/students")
 public class StudentController {
 	
 
@@ -34,7 +34,7 @@ public class StudentController {
 	
 	private static final Logger log = LoggerFactory.getLogger(StudentController.class);
 	
-	@GetMapping("/")
+	@GetMapping("/getStudents")
 	public List<Student> findAllStudents() throws StudentNotFoundException
 	{
 		List<Student> students = studentService.findAllStudents();
@@ -47,14 +47,14 @@ public class StudentController {
 		return students;
 	}
 	
-	@PostMapping("/")
+	@PostMapping("/addStudent")
 	public ResponseEntity<Student>addStudent(@RequestBody @Valid StudentDto student)
 	{
 		log.info(student.getFirstName()+" Added successfully.");
 		return new ResponseEntity<>(studentService.saveStudent(student),HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/findStudentById/{id}")
 	public Optional<Student> findStudentById(@PathVariable Long id) throws StudentNotFoundException
 	{
 		Optional<Student> student =  studentService.findStudentById(id);
@@ -68,7 +68,7 @@ public class StudentController {
 		return student;
 	}
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/deleteStudentById/{id}")
 	public void deleteById(@PathVariable Long id)
 	{
 		studentService.deleteById(id);
@@ -105,7 +105,7 @@ public class StudentController {
 	
 //	this method will update the student in the database
 	
-	@PutMapping("/update")
+	@PutMapping("/updateStudent")
 	public Student updateStudent(@Valid @RequestBody Student student)
 	{
 		return studentService.updateStudent(student);

@@ -10,7 +10,7 @@ import com.cts.sms.entity.User;
 import com.cts.sms.service.UserService;
 
 @RestController
-@RequestMapping("/access")
+//@RequestMapping("/access")
 public class UserController {
 
 	@Autowired
