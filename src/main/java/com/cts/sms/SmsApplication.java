@@ -14,8 +14,8 @@ public class SmsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SmsApplication.class, args);
 		
-		log.info("Welcome to Student Management System");
-		log.info("Student Management System is started");
+		log.info("Welcome to School Management System");
+		log.info("School Management System is started");
 		
 	}
 

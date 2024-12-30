@@ -20,6 +20,7 @@ import lombok.Data;
 public class StudentDto {
 	
 	@Valid
+	private Long studentId;
 	@NotNull(message="First Name is Required")
 	@Size(min =2, max = 25, message = "First Name Must be Between 2 to 25")
 	private String firstName;

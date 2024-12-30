@@ -1,5 +1,7 @@
 package com.cts.sms.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +15,7 @@ import com.cts.sms.service.UserService;
 //@RequestMapping("/access")
 public class UserController {
 
+	private static final Logger log = LoggerFactory.getLogger(UserController.class);
 	@Autowired
 	private UserService userService;
 	
@@ -25,8 +28,11 @@ public class UserController {
 	@PostMapping("/login")
 	public String login(@RequestBody User user)
 	{
+		log.info("Login Process Started");
+		
 		return userService.verify(user);
 	}
+	
 	
 	
 }
